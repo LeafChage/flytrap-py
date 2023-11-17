@@ -4,6 +4,7 @@ version = "0.1.0"
 license = "MIT"
 description = "parser"
 authors = ["LeafChage <t.kusanagi5512@gmail.com>"]
+repository = "https://github.com/LeafChage/flytrap-py"
 readme = "README.md"
 packages = [
     {include = "flytrap"},
