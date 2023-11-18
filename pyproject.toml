@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flytrap-py"
-version = "0.1.0"
+version = "0.1.1"
 license = "MIT"
 description = "parser"
 authors = ["LeafChage <t.kusanagi5512@gmail.com>"]
