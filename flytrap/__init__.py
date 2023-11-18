@@ -14,3 +14,5 @@ from .take_parser      import take
 from .token_parser     import token
 from .until_parser     import until
 from .lazy_parser      import lazy
+from .split_by_parser  import split_by
+from .space_parser     import space, spaces
