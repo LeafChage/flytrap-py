@@ -15,8 +15,8 @@ class TestOrParser:
     def test_raise(self):
         p = OrParser(StringParser("hoge"), StringParser("fuga"))
         e = ParserException.concat(
-                ParserException(expect=["hoge"], actual="hell"),
-                ParserException(expect=["fuga"], actual="hell")
+                ParserException(expect="hoge", actual="hell"),
+                ParserException(expect="fuga", actual="hell")
                 )
         with pytest.raises(ParserException, match=e.msg()):
              p.parse("helloworld")

@@ -13,7 +13,7 @@ class TestAndParser:
 
     def test_raise(self):
         p = AndParser(StringParser("hello"), AnyParser())
-        e = ParserException(expect=["hello"], actual="world")
+        e = ParserException(expect="hello", actual="world")
         with pytest.raises(ParserException, match=e.msg()):
              p.parse("worldhello")
 

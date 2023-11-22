@@ -9,20 +9,15 @@ class OneOfParser(IParser[str, str]):
         for target in targets[:]:
             self._target.append(target)
 
-    def expect(self) -> list[str]:
-        return self._target
-
     def parse(self, stream: str) -> tuple[str, str]:
         if len(stream) <= 0:
-            raise ParserException(expect=self.expect(), actual="EOF")
+            raise ParserException(expect=self._target, actual="EOF")
         else:
             v = stream[0]
             if v in self._target:
                 return (v, stream[1:])
             else:
-                raise ParserException(expect=self.expect(), actual=v)
-
-
+                raise ParserException(expect=self._target, actual=v)
 
 def one_of(v: str):
     return OneOfParser(v)

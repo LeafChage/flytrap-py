@@ -9,10 +9,6 @@ class IParser[Item, Output](ABC):
     def parse(self, stream: Sequence[Item]) -> tuple[Output, Sequence[Item]]:
         pass
 
-    @abstractmethod
-    def expect(self) -> list[str]:
-        pass
-
     def and_[Output2](self, p: Self[Item, Output2]) -> Self[Item, tuple[Output, Output2]]:
         from .and_parser import AndParser
         return AndParser(self, p)
@@ -35,7 +31,7 @@ class IParser[Item, Output](ABC):
 
     def debug(self) -> Self[Item, Output]:
         def debug(v: Output) -> Output:
-            print(v)
+            print(repr(v))
             return v
         return self.map(debug)
 

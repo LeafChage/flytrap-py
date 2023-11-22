@@ -13,13 +13,13 @@ class TestWithParser:
 
     def test_raise_first_parser(self):
         p = WithParser(StringParser("hello"), AnyParser())
-        e = ParserException(expect=["hello"], actual="world")
+        e = ParserException(expect="hello", actual="world")
         with pytest.raises(ParserException, match=e.msg()):
              p.parse("worldhello")
 
     def test_raise_second_parser(self):
         p = WithParser(StringParser("hello"), StringParser("aaa"))
-        e = ParserException(expect=["aaa"], actual="wor")
+        e = ParserException(expect="aaa", actual="wor")
         with pytest.raises(ParserException, match=e.msg()):
              p.parse("helloworld")
 

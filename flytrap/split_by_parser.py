@@ -20,9 +20,6 @@ class SplitByParser[E, O](IParser[E, list[O]]):
         self._p = p
         self._split = split
 
-    def expect(self) -> list[str]:
-        return self._p.expect() + self._split.expect()
-
     def parse(self, s: Sequence[E]) -> tuple[list[O], Sequence[E]]:
         try:
             (value, stream) = self._p.parse(s)

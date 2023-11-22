@@ -20,11 +20,15 @@ class ParserException(Exception):
     def actual(self)->str:
         return self._actual
 
-    def __init__(self, expect: list[str], actual: str) -> None:
-        self._expect = expect
+    def __init__(self, expect: str | list[str], actual: str) -> None:
+        if isinstance(expect, list):
+            self._expect = expect
+        else:
+            self._expect = [expect]
+
         self._actual = actual
         super().__init__(self.msg())
 
 
     def msg(self)->str:
-        return "expect: {}, actual: {}".format("|".join(self.expect), self.actual)
+        return repr("expect: {}, actual: {}".format("|".join(self.expect), self.actual))
