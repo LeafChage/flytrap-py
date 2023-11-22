@@ -8,15 +8,12 @@ class TakeParser[E](IParser[E, Sequence[E]]):
     def __init__(self, n: int) -> None:
         self._length = n
 
-    def expect(self) -> list[str]:
-        return ['*'*self._length]
-
     def parse(self, stream: str) -> tuple[str, str]:
         if len(stream) >= self._length:
             return (stream[:self._length], stream[self._length:])
         else:
             raise ParserException(
-                expect=self.expect(),
+                expect='*'*self._length,
                 actual=stream[:self._length]
             )
 

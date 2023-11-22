@@ -12,7 +12,7 @@ class TestTakeParser:
 
     def test_raise(self):
         p = TakeParser(5)
-        e = ParserException(expect=["*****"], actual="hel")
+        e = ParserException(expect="*****", actual="hel")
         with pytest.raises(ParserException, match=re.escape(e.msg())):
              p.parse("hel")
 

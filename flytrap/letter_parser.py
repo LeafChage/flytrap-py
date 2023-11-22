@@ -18,9 +18,6 @@ class LetterParser(IParser[str, str]):
     def __init__(self) -> None:
         pass
 
-    def expect(self) -> list[str]:
-        return _letter
-
     def parse(self, stream: str) -> tuple[str, str]:
         try:
             v = stream[0]

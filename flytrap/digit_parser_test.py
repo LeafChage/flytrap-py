@@ -1,5 +1,5 @@
 import pytest
-from .digit_parser import DigitParser
+from .digit_parser import DigitParser, _digit
 from .parser_exception import ParserException
 
 class TestDigitParser:
@@ -11,12 +11,12 @@ class TestDigitParser:
         assert stream == "23hi"
 
     def test_raise(self):
-        e = ParserException(expect=self.p.expect(), actual="h")
+        e = ParserException(expect=_digit, actual="h")
         with pytest.raises(ParserException, match=e.msg()):
              self.p.parse("hi")
 
     def test_raise_nothing(self):
-        e = ParserException(expect=self.p.expect(), actual="EOF")
+        e = ParserException(expect=_digit, actual="EOF")
         with pytest.raises(ParserException, match=e.msg()):
              self.p.parse("")
 

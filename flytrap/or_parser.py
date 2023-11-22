@@ -10,9 +10,6 @@ class OrParser[E, O](IParser[E, O]):
         self._p1 = p1
         self._p2 = p2
 
-    def expect(self)-> list[str]:
-        return self._p1.expect() + self._p2.expect()
-
     def parse(self, stream: Sequence[E]) -> tuple[O, Sequence[E]]:
         try:
             return self._p1.parse(stream)

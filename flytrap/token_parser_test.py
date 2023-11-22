@@ -10,12 +10,12 @@ class TestTokenParser:
         assert stream == [2,3,4,5]
 
     def test_raise(self):
-        e = ParserException(expect=["1"], actual="5")
+        e = ParserException(expect="1", actual="5")
         with pytest.raises(ParserException, match=e.msg()):
              self.p.parse([5,4,3,2,1])
 
     def test_raise_nothing(self):
-        e = ParserException(expect=["1"], actual="")
+        e = ParserException(expect="1", actual="EOF")
         with pytest.raises(ParserException, match=e.msg()):
              self.p.parse([])
 

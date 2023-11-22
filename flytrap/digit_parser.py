@@ -7,20 +7,16 @@ class DigitParser(IParser[str,str]):
     def __init__(self) -> None:
         pass
 
-    def expect(self) -> list[str]:
-        return _digit
-
     def parse(self, stream: str) -> tuple[str, str]:
         try:
             d = stream[0]
         except IndexError:
-            raise ParserException(self.expect(), "EOF")
+            raise ParserException(_digit, "EOF")
         else:
             if d in _digit:
                 return (d, stream[1:])
             else:
-                raise ParserException(self.expect(), d)
-
+                raise ParserException(_digit, d)
 
 def digit():
     return DigitParser()
