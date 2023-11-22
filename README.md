@@ -1,6 +1,12 @@
 # flytrap-py
 parser
 
+## Install
+```sh
+pip install flytrap-py
+```
+
+
 ## How to use
 ```python3
 from typing import Dict, Union
